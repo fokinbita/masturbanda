@@ -14,7 +14,6 @@
       align-items: center;
       overflow: hidden;
       font-family: sans-serif;
-      flex-direction: column;
     }
 
     #startBtn {
@@ -26,15 +25,16 @@
       color: black;
       cursor: pointer;
       box-shadow: 0 0 20px hotpink;
-      z-index: 10;
+    }
+
+    #container {
+      display: none;
+      gap: 20px;
     }
 
     .gif {
-      display: none;
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain;
-      position: absolute;
+      width: 200px;
+      height: auto;
     }
   </style>
 </head>
@@ -42,9 +42,11 @@
 
   <button id="startBtn">Tocame bb👅🔥</button>
 
-  <img class="gif" src="besote.gif">
-  <img class="gif" src="cachetadas.gif">
-  <img class="gif" src="perrobomba.gif">
+  <div id="container">
+    <img class="gif" src="besote.gif">
+    <img class="gif" src="cachetadas.gif">
+    <img class="gif" src="perrobomba.gif">
+  </div>
 
   <audio id="audio" loop>
     <source src="rico.mp3" type="audio/mpeg">
@@ -52,13 +54,13 @@
 
   <script>
     const btn = document.getElementById("startBtn");
-    const gifs = document.querySelectorAll(".gif");
+    const container = document.getElementById("container");
     const audio = document.getElementById("audio");
 
     btn.addEventListener("click", () => {
       audio.play();
       btn.remove();
-      gifs.forEach(gif => gif.style.display = "block");
+      container.style.display = "flex";
     });
   </script>
 
