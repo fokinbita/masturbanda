@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>MASTURBANDA</title>
+  <title>Masturbanda</title>
   <style>
     html, body {
       margin: 0;
@@ -13,9 +13,22 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      font-family: sans-serif;
     }
 
-    img {
+    #startBtn {
+      font-size: 2rem;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 12px;
+      background: hotpink;
+      color: black;
+      cursor: pointer;
+      box-shadow: 0 0 20px hotpink;
+    }
+
+    #gif {
+      display: none;
       width: 100vw;
       height: 100vh;
       object-fit: contain;
@@ -24,16 +37,23 @@
 </head>
 <body>
 
-  <img src="besote.gif" alt="GIF">
+  <button id="startBtn">Tocame bb👅🔥</button>
 
-  <audio id="audio" loop autoplay>
+  <img id="gif" src="besote.gif" alt="GIF">
+
+  <audio id="audio" loop>
     <source src="rico.mp3" type="audio/mpeg">
   </audio>
 
   <script>
+    const btn = document.getElementById("startBtn");
+    const gif = document.getElementById("gif");
     const audio = document.getElementById("audio");
-    audio.play().catch(() => {
-      document.body.addEventListener("click", () => audio.play(), { once: true });
+
+    btn.addEventListener("click", () => {
+      audio.play();
+      btn.remove();
+      gif.style.display = "block";
     });
   </script>
 
