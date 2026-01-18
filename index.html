@@ -2,11 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Besote</title>
+  <title>GIF + Audio</title>
   <style>
     html, body {
       margin: 0;
-      padding: 0;
       width: 100%;
       height: 100%;
       background: black;
@@ -14,21 +13,42 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      cursor: pointer;
     }
 
     img {
-      max-width: 90vw;
-      max-height: 90vh;
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+    }
+
+    #hint {
+      position: absolute;
+      bottom: 20px;
+      color: white;
+      font-family: sans-serif;
+      opacity: 0.7;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <img src="besote.gif" alt="besote">
+  <img src="besote.gif" alt="GIF">
 
-  <audio autoplay loop>
+  <div id="hint">toca para activar sonido</div>
+
+  <audio id="audio" loop>
     <source src="rico.mp3" type="audio/mpeg">
   </audio>
+
+  <script>
+    const audio = document.getElementById("audio");
+    document.body.addEventListener("click", () => {
+      audio.play();
+      document.getElementById("hint").remove();
+    }, { once: true });
+  </script>
 
 </body>
 </html>
