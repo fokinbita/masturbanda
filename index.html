@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Masturbanda</title>
+  <title>MASTURBANDA</title>
   <style>
     html, body {
       margin: 0;
@@ -13,7 +13,6 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      cursor: pointer;
     }
 
     img {
@@ -21,33 +20,21 @@
       height: 100vh;
       object-fit: contain;
     }
-
-    #hint {
-      position: absolute;
-      bottom: 20px;
-      color: white;
-      font-family: sans-serif;
-      opacity: 0.7;
-      font-size: 14px;
-    }
   </style>
 </head>
 <body>
 
   <img src="besote.gif" alt="GIF">
 
-  <div id="hint">toca para activar sonido</div>
-
-  <audio id="audio" loop>
+  <audio id="audio" loop autoplay>
     <source src="rico.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     const audio = document.getElementById("audio");
-    document.body.addEventListener("click", () => {
-      audio.play();
-      document.getElementById("hint").remove();
-    }, { once: true });
+    audio.play().catch(() => {
+      document.body.addEventListener("click", () => audio.play(), { once: true });
+    });
   </script>
 
 </body>
